@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import javax.swing.text.html.parser.Entity;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class Tests {
@@ -113,7 +111,7 @@ public class Tests {
     }
 
     @ParameterizedTest(name = "добавление неверных оценок кидает исключение")
-    @MethodSource("hw1.MarksGenerator#ints")
+    @MethodSource("hw1.MarksGenerator#illegalInts")
     public void marksNotInRange(int x) {
         Student stud = new Student("Vasyan");
         Assertions.assertThrows(IllegalArgumentException.class, () -> stud.addGrade(x));
