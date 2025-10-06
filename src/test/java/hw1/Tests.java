@@ -11,12 +11,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class Tests {
-    @Test
-    public void testHashCode(){
-
+    @Test void testToString() {
+        Student student = new Student("A");
+        student.addGrade(4);
+        assertEquals("Student{name=A, marks=[4]}",student.toString());
     }
     @Test
-    public void testEquals(){
+    public void testHashCode(){
+    Student student = new Student("A");
+    Student student1 = new Student("A");
+    student.addGrade(3);
+    student1.addGrade(3);
+    assertEquals(student.hashCode(), student1.hashCode());
+    }
+    @Test
+    public void testFullEquals(){
         Student student = new Student("A");
         Student student1 = new Student("A");
         student.addGrade(3);
@@ -24,12 +33,17 @@ public class Tests {
         assertEquals(student1,student);
     }
     @Test
-    public void testNotEquals(){
+    public void testNotEqualsMarks(){
         Student student = new Student("A");
         Student student1 = new Student("A");
         student.addGrade(3);
         student1.addGrade(4);
-        assertNotEquals(student1,student);
+        assertNotEquals(student,student1);
+    }    @Test
+    public void testNotEqualsNames(){
+        Student student = new Student("A");
+        Student student1 = new Student("B");
+        assertNotEquals(student,student1);
     }
     @Test
     public void testSetName(){
