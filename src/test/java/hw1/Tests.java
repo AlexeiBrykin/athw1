@@ -39,12 +39,25 @@ public class Tests {
     }
 
     @Test
+    public void testSelfEquals() {
+        Student student = new Student("A");
+        student.addGrade(3);
+        assertEquals(student, student);
+    }
+
+    @Test
     public void testNotEqualsMarks() {
         Student student = new Student("A");
         Student student1 = new Student("A");
         student.addGrade(3);
         student1.addGrade(4);
         assertNotEquals(student, student1);
+    }
+    @Test
+    public void testNotEqualsNull() {
+        Student student = new Student("A");
+        student.addGrade(3);
+        assertNotEquals(student, null);
     }
 
     @Test
