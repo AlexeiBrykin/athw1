@@ -9,8 +9,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import javax.swing.text.html.parser.Entity;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Tests {
     @Test
@@ -53,6 +52,7 @@ public class Tests {
         student1.addGrade(4);
         assertNotEquals(student, student1);
     }
+
     @Test
     public void testNotEqualsNull() {
         Student student = new Student("A");
@@ -94,6 +94,14 @@ public class Tests {
         student.addGrade(2);
         assertEquals(1, student.getGrades().size());
         assertEquals(2, student.getGrades().get(0));
+    }
+
+    @ParameterizedTest
+    @MethodSource("hw1.MarksGenerator#ints")
+    public void testSetGradeThroughGetter(int x) {
+        Student student = new Student("A");
+        student.getGrades().add(x);
+        assertTrue(student.getGrades().isEmpty());
     }
 
     @RepeatedTest(value = 4, name = "корректные оценки добавляются в список")
